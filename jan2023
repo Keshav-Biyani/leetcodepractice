@@ -1,0 +1,28 @@
+520. Detect Capital
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        int length = word.length();
+        int i =0;
+        int c= 0;
+        int p=0;
+        if(length == 1){
+            return true;
+        }
+        while(i<length){
+            if(word[i]>'a'){
+                  c++;  
+                      
+            }
+            else if(word[0]>'A'){
+                p++;
+                  
+            }
+            i++;
+        }
+        if(p== length || c==length){
+        return true;
+        }
+        return false;
+    }
+};
