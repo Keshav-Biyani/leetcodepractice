@@ -1,0 +1,46 @@
+class Solution {
+public:
+    int distanceBetweenBusStops(vector<int>& distance, int start, int destination) 
+    {
+        int  min=0;
+        int p=0,q=0;
+        if(destination>start)
+        {
+            for(int i=start;i<destination;i++)
+            {
+                p=distance[i]+p;
+            }
+            for(int i=0;i<distance.size();i++)
+            {
+                q=distance[i]+q;
+            }
+            q=q-p;
+            if(p>q)
+            {
+                return q;
+            }
+            else 
+                return p;
+        }
+        else
+        {
+            for(int i=destination;i<start;i++)
+            {
+                p=distance[i]+p;
+            }
+            for(int i=0;i<distance.size();i++)
+            {
+                q=distance[i]+q;
+            }
+            q=q-p;
+            if(p>q)
+            {
+                return q;
+            }
+            else 
+                return p;
+        }
+        return 5;
+
+    }
+};
