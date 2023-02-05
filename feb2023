@@ -44,3 +44,50 @@ public:
 
     }
 };
+problem 48
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) 
+    {
+            int m=matrix.size();
+            int n=matrix[0].size();
+            int srow=0,scol=0;
+            int erow =m-1;
+            int ecol=n-1;
+            vector <int> temp,temp1,temp2,temp3;
+            //starting row should greater than end row
+            while(srow<erow)
+            {
+             //add all the periferal element in vector array   
+            for(int col=srow;col<=ecol;col++)
+            {
+                temp.push_back(matrix[srow][col]);
+                temp1.push_back(matrix[col][ecol]);
+                temp2.push_back(matrix[erow][col]);
+                temp3.push_back(matrix[col][scol]);
+            }
+            reverse(temp1.begin(), temp1.end());
+            reverse(temp3.begin(), temp3.end());
+            // add all periferal element after 90degree rotation of matrix
+            int i =0 ; 
+            for(int col=srow;col<=ecol;col++)
+            {
+                matrix[col][ecol]=temp[i];
+                matrix[erow][col]=temp1[i];
+                matrix[col][scol]=temp2[i];
+                matrix[srow][col] = temp3[i];
+            i++;
+            }
+            //clear vector
+            temp.clear();
+            temp1.clear();
+            temp2.clear();
+            temp3.clear();
+            // coming to smaller matrix
+            srow++;
+            scol++;
+            ecol--;
+            erow--;
+        }
+    }
+};
