@@ -91,3 +91,36 @@ public:
         }
     }
 };
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+say number
+#include <iostream>
+
+using namespace std;
+
+void callNumber(int n,string arr[])
+{
+    if(n==0){
+        return ;
+    }
+    int d =n%10;
+    n=n/10;
+    callNumber(n,arr);
+    std::cout << arr[d]<<" " ;
+    
+}
+int main()
+{
+    int n;
+    cin>>n;
+    string arr[10]={
+        "Zero","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"
+    };
+    callNumber(n,arr);
+}
+
