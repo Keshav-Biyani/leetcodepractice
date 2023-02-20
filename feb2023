@@ -123,4 +123,72 @@ int main()
     };
     callNumber(n,arr);
 }
+Recursion
+#include <iostream>
+using namespace std;
 
+bool binary(int *arr,int s,int e,int p){
+    if(e<s){
+        return false;
+    }
+    int mid = (e-s)/2 +s;
+    if(arr[mid]==p){
+        return true;
+    }
+    if(arr[mid]<p)
+    {
+       bool q= binary(arr,mid+1,e,p);
+       return q;
+    }
+    if(arr[mid]>p){
+       bool q= binary(arr,s,mid-1,p);
+        return q;
+    }
+   
+}
+int main()
+{
+    int arr[]={1,2,4,5,7};
+    cout<<binary(arr,0,4,2);
+   
+    return 0;
+}
+#include <iostream>
+using namespace std;
+
+bool linearSearch(int arr[],int n,int p)
+{
+    if(n==0)
+    {
+        return false;
+    }
+    else if (p==arr[0])
+    {
+        return true;
+    }
+    
+    linearSearch(arr+1,n-1,p);
+        
+    
+}
+int main()
+{
+    int arr[]={1,2,4,5,7};
+    cout<<linearSearch(arr,4,16);
+}
+#include <iostream>
+using namespace std;
+int sumA(int arr[],int n)
+{
+       if(n>0)
+       {
+            arr[n-1]=arr[n-1] +arr[n];
+            sumA(arr,n-1);
+       }
+       return arr[0];
+}
+int main(){
+    int arr[] ={1,2,3,5,5};
+    int m=sumA(arr,4);
+    cout<<m;
+}
