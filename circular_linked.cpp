@@ -18,7 +18,7 @@ public:
             delete next;
             next = NULL;
         }
-        cout << "memory is free with data " << value << endl;
+        cout << "memory is free with datv" << value << endl;
     }
 };
 void insertNode(Node* &tail,int data,int element){
