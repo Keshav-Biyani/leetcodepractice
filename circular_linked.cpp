@@ -38,12 +38,36 @@ void insertNode(Node* &tail,int data,int element){
         cNode->next = currNode->next;
         currNode->next = cNode;
 
-
-        
-
     }
 }
+void DeleteNode(Node* &tail,int element){
+    if(tail == NULL){
+        cout<<"There is No data in list"<<endl;
+    }
+      Node* prevNode =tail;
+    Node* currNode = prevNode->next;
+  
+      while (currNode->data !=  element )
+        {
+            prevNode = currNode;
+            currNode = currNode->next;
+        }
+     
+        prevNode->next= currNode->next;
+        if(currNode == prevNode){
+            tail = NULL;// for only single elment in the list
+        }
+        if(tail== currNode){
+            tail=prevNode->next;
+        }
+        currNode->next =NULL;
+        delete currNode;
+}
 void print(Node* &tail){
+    if(tail == NULL){
+        cout<<"No data in list"<<endl;
+        return ;
+    }
     Node* temp = tail;
     do{
         cout<<temp->data<<" ";
@@ -64,7 +88,11 @@ int main()
     print(tail);
     insertNode(tail,2,5);
     print(tail);
-    insertNode(tail,4,2);
+    // insertNode(tail,4,2);
+    // print(tail);
+    // insertNode(tail,7,2);
+    // print(tail);
+    DeleteNode(tail,2);
     print(tail);
     return 0;
 }
