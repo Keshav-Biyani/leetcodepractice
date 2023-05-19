@@ -39,8 +39,9 @@ void deleteAnode(Node *&tail, Node *&head, int postion)
     if (postion == 1)
     {
         head = head->next; // 5->6.NULL
+        temp->next =NULL;
         delete temp;
-    }
+    }else{
     int cnt = 1;
     while (cnt < postion - 1)
     {
@@ -55,6 +56,7 @@ void deleteAnode(Node *&tail, Node *&head, int postion)
     temp->next = temp1->next; // 6-next=7-next
     temp1->next = NULL;
     delete temp1;
+    }
 }
 void insertAtPosition(Node *&tail, Node *&head, int data, int postion)
 {
@@ -106,6 +108,8 @@ int main()
     print(head);
 
     deleteAnode(tail, head, 4);
+    
+    deleteAnode(tail, head, 1);
     print(head);
     cout << "Head = " << head->data << endl;
     cout << "Tail = " << tail->data << endl;
