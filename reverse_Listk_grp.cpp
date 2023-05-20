@@ -132,7 +132,7 @@ int main()
     Node *node1 = new Node(10);
 
     Node *head = node1;
-   // Node *tail = node1;
+   // Node *tail = node1;ff
     insertAtHead(head, 12);
 
     insertAtHead(head, 15);
