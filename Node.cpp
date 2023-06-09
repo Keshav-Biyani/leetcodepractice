@@ -39,23 +39,25 @@ void deleteAnode(Node *&tail, Node *&head, int postion)
     if (postion == 1)
     {
         head = head->next; // 5->6.NULL
-        temp->next =NULL;
+        temp->next = NULL;
         delete temp;
-    }else{
-    int cnt = 1;
-    while (cnt < postion - 1)
-    {
-        temp = temp->next;
-        cnt++;
     }
-    Node *temp1 = temp->next;
-    if (temp1->next == NULL)
+    else
     {
-        tail = temp;
-    }
-    temp->next = temp1->next; // 6-next=7-next
-    temp1->next = NULL;
-    delete temp1;
+        int cnt = 1;
+        while (cnt < postion - 1)
+        {
+            temp = temp->next;
+            cnt++;
+        }
+        Node *temp1 = temp->next;
+        if (temp1->next == NULL)
+        {
+            tail = temp;
+        }
+        temp->next = temp1->next; // 6-next=7-next
+        temp1->next = NULL;
+        delete temp1;
     }
 }
 void insertAtPosition(Node *&tail, Node *&head, int data, int postion)
@@ -91,6 +93,31 @@ void print(Node *&head)
     }
     cout << endl;
 }
+int getLength(Node* head){
+    Node *temp = head;
+    int cnt =0;
+    while (temp != NULL){
+        temp= temp->next;
+        cnt++;
+    }
+    return cnt;
+
+
+}
+
+Node *findMiddle(Node *head) {
+    // Write your code here
+    int len =getLength(head);
+    int mid = len/2;
+    Node *temp = head;
+    int cnt =0;
+    while(cnt<mid){
+        temp = temp->next;
+        cnt++;
+    }
+
+    return temp;
+}
 int main()
 {
     Node *node1 = new Node(10);
@@ -103,14 +130,18 @@ int main()
     insertAtTail(tail, 15);
     print(head);
     insertAtTail(tail, 16);
+    insertAtTail(tail, 17);
     print(head);
     insertAtPosition(tail, head, 14, 2);
     print(head);
 
-    deleteAnode(tail, head, 4);
-    
-    deleteAnode(tail, head, 1);
+    // deleteAnode(tail, head, 4);
+
+    // deleteAnode(tail, head, 1);
     print(head);
+    Node * middle = findMiddle(head);
+    cout<<"Middle "<<middle->data<<endl;
+
     cout << "Head = " << head->data << endl;
     cout << "Tail = " << tail->data << endl;
     return 0;
