@@ -127,6 +127,32 @@ Node* kReverse(Node* head, int k) {
     return head;
 
 }
+Node *getListAfterReverseOperation(Node *head, int n, int b[]){
+    if(head == NULL ||head->next == NULL){
+        return head;
+    }
+    Node* tail = head;
+    int cnt =1;
+    while(cnt<b[0] && tail->next!= NULL){
+        tail = tail->next;
+        cnt++;
+    }
+    Node *curr = head;
+    Node *prev = NULL;
+	Node *next2 = NULL;
+	if(b[0] >0)
+    Node *next2 = tail->next;
+	else 
+	 Node *next2 = tail;
+
+    reverse_list(head, tail, curr, prev,next2 );
+    Node *chotalist = getListAfterReverseOperation(next2 ,n,b+1);
+    tail->next= chotalist;
+   
+    
+    return head;
+		
+}
 int main()
 {
     Node *node1 = new Node(10);
