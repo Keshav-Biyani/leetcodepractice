@@ -1,0 +1,75 @@
+class Solution {
+public:
+// int divider(vector<int> &nums, int s, int e)
+// {
+//     int count = 0;
+//     for (int i = s; i <= e; i++)
+//     {
+//         if (nums[s] > nums[i])
+//         {
+//             count++;
+//         }
+//     }
+//     int index = s + count;
+//     swap(nums[s], nums[index]);
+
+//     // cout<<count<<endl;
+//    // cout << arr[s + e] << endl;
+//   // cout<<index<<endl;
+//     int i = s, j = e;
+//     while (i != index || j != index)
+//     {
+//         if (nums[i] > nums[index] && nums[j] < nums[index])
+//         {
+//             swap(nums[i], nums[j]);
+//             i++;
+//             j--;
+//         }
+//         else if (nums[i] > nums[index] || nums[j] > nums[index])
+//         {
+//             j--;
+//         }
+//         else if (nums[i] < nums[index] || nums[j] < nums[index])
+//         {
+//             i++;
+//         }
+//         else if (nums[i] < nums[index] && nums[j] > nums[index])
+//         {
+//             i++;
+//             j--;
+//         }
+//     }
+   
+//     return index;
+// }
+// void quick(vector<int>&nums, int s, int e)
+// {
+//     if (s >= e)
+//     {
+//         return;
+//     }
+//     int p = divider(nums, s, e);
+//     // cout<<p<<endl;
+//     quick(nums, s, p - 1);
+//     quick(nums, p + 1, e);
+//}
+    vector<int> sortedSquares(vector<int>& nums) {
+        vector<int> result(nums.size());
+        for(int i =0 ; i<nums.size();i++){
+            nums[i] = nums[i]*nums[i];
+        }
+        int s =0;
+        int e = nums.size()-1;
+        for(int pos = nums.size()-1;pos>=0;pos--){
+            if(nums[s]>nums[e]){
+                result[pos]=nums[s];
+                s++;
+            }else{
+                result[pos]=nums[e];
+                e--;
+            }
+        }
+return result;
+
+    }
+};
