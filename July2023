@@ -171,3 +171,52 @@ public:
         return maxi;
     }
 };
+
+Key Pair(GFG)
+
+bool hasArrayTwoCandidates(int arr[], int n, int x) {
+	     unordered_set<int> s;
+	    for (int i = 0; i < n; i++) {
+	        if (s.find(x-arr[i]) != s.end()) return true;
+	        s.insert(arr[i]);
+	    }
+	    return false;
+	}
+
+Key Pair(GFG) with more optimal aproach
+//User function template for C++
+class Solution{
+public:	
+	// Function to check if array has 2 elements
+	// whose sum is equal to the given value
+	void bubble(int *arr,int size)
+{
+    if(size<0){
+        return ;
+    }
+    for(int i=0;i<=size-1;i++){
+        if(arr[i]>arr[i+1])
+        {
+            swap(arr[i],arr[i+1]);
+        }
+    }
+    bubble(arr,size-1);
+}
+	bool hasArrayTwoCandidates(int arr[], int n, int x) {
+	    bubble(arr,n-1);
+	    int s =0,e = n-1;
+	    int sum = 0;
+	    while(s<e){
+	        sum =arr[s]+ arr[e];
+	        if(sum>x){
+	            e--;
+	        }else if(sum<x){
+	            s++;
+	        }
+	        else{
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+};
