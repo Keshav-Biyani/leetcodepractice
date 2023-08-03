@@ -1,0 +1,33 @@
+https://leetcode.com/problems/combination-sum-iii/description/
+216. Combination Sum III
+
+class Solution {
+public:
+    void solve(int curr,int n ,int k,vector<vector<int>> &ans,vector<int> c){
+        if(k==0){
+            if(n==0){
+                ans.push_back(c);
+            }
+            return ;
+        }
+        if(curr>= 10){
+            return ;
+        }
+       if(n>= curr){
+           c.push_back(curr);
+           solve(curr+1,n-curr,k-1,ans,c);
+           c.pop_back();
+           solve(curr+1,n,k,ans,c);
+       }
+       else
+           return;
+       
+    }
+    vector<vector<int>> combinationSum3(int k, int n) {
+        int currNumber =1;
+        vector<int> c;
+         vector<vector<int>> ans;
+        solve(currNumber,n,k,ans,c); 
+        return ans;
+    }
+};
